@@ -1,0 +1,3 @@
+include ':locationprovider'
+include ':app'
+rootProject.name = "Location Provider Example"
