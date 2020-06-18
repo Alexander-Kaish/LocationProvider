@@ -198,8 +198,11 @@ class LocationProvider :
 
     private fun removeHandlerFragment() {
         _permissionHandlerFragment ?: return
-        _activity?.supportFragmentManager!!.beginTransaction().remove(_permissionHandlerFragment!!).commit()
-        _fragment?.childFragmentManager!!.beginTransaction().remove(_permissionHandlerFragment!!).commit()
+        if (_fragment != null) {
+            _fragment!!.childFragmentManager.beginTransaction().remove(_permissionHandlerFragment!!).commit()
+        } else {
+            _activity!!.supportFragmentManager.beginTransaction().remove(_permissionHandlerFragment!!).commit()
+        }
         _permissionHandlerFragment = null
     }
 
